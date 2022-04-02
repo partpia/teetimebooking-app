@@ -1,20 +1,22 @@
-import { Layout } from 'antd';
+import { Routes, Route, Link } from "react-router-dom";
 import TopHeader from './components/TopHeader';
+import PageFooter from './components/PageFooter';
+import PageContent from './components/PageContent';
+import ErrorPage from "./components/ErrorPage";
+import SignUp from "./components/SignUp";
 import './App.css';
 
 function App() {
-  const { Header, Footer, Sider, Content } = Layout;
 
   return (
     <div className="App">
-      <Layout>
         <TopHeader />
-        <Layout>
-          <Content>Content</Content>
-          <Sider>Sider</Sider>
-        </Layout>
-        <Footer>Footer</Footer>
-      </Layout>
+        <Routes>
+          <Route path="/" element={<PageContent />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        <PageFooter />
     </div>
   );
 }
