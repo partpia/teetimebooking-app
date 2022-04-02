@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Drawer, Button } from "antd";
+import { MenuOutlined } from '@ant-design/icons';
 
 const MenuRightSide = () => {
     const [visible, setVisible] = useState(false);
@@ -14,9 +15,10 @@ const MenuRightSide = () => {
 
     return (
         <div>
-            <Button type="primary" onClick={showDrawer}>
-                Menu
-            </Button>
+            <Button
+                icon={<MenuOutlined />}
+                onClick={showDrawer}
+            />
             <Drawer title="Basic Drawer" placement="right" onClose={onClose} visible={visible}>
                 <p>Some contents...</p>
             </Drawer>

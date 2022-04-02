@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, PageHeader } from "antd";
+import { PageHeader } from "antd";
 import MenuRightSide from "./MenuRightSide";
 
 const TopHeader = () => {
@@ -7,8 +7,8 @@ const TopHeader = () => {
     return(
         <PageHeader
             className="header"
-            title="Riviera Maya Golf Club"
-            subTitle="Some text"
+            title="Riviera Maya del Sol Golf Club"
+            subTitle="Sun is always shining and the greens are greener"
             extra={[
                 <MenuRightSide />
             ]}
