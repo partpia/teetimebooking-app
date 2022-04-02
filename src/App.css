@@ -1,11 +1,72 @@
 @import "~antd/dist/antd.css";
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Raleway:wght@500&family=Rock+Salt&display=swap');
 
 .App {
-  text-align: center;
+  font-family: 'Raleway', sans-serif;
 }
-
+.black-link {
+  color: black;
+}
 .header {
   border: 1px solid rgb(235, 237, 240);
-  background-color: #FFFFFF;
-  color: #175873;
+  background-color: #EEEDE7;
+  font-family: 'Questrial', sans-serif;
+}
+.get-started-main {
+  background-color: #EEEDE7;
+}
+.get-started-main-col {
+  background: url("./assets/images/michael-mueller-u6C3lULwghM-unsplash.jpg") 30% 70% no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  height: 500px;
+  object-fit: cover;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #F6EEE0;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 80%);
+}
+.get-started-main-card-group {
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 80px;
+  height: auto;
+  background-color: #EEEDE7;
+  text-align: center;
+  align-items: center;
+}
+.card-group {
+  padding: 20px;
+}
+.card-group-card-even {
+  background-color: #EBE8E0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 16px 0 rgba(0, 0, 0, 0.19);
+}
+.card-group-card-uneven {
+  background-color: rgb(220, 210, 204, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 16px 0 rgba(0, 0, 0, 0.19);
+}
+.get-started-info {
+  background-color: #B9C8BC;
+  height: inherit;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.info-title {
+  font-family: 'Rock Salt', cursive;
+  text-align: center;
+}
+.info-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: 30px;
+  justify-content: center;
+  color: black;
+}
+
+.footer {
+  background-color: #3B9778;
+  height: 400px;
+  clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
 }
