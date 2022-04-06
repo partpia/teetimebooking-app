@@ -77,7 +77,6 @@ const PageContent = () => {
                         width="auto"
                         src="https://images.unsplash.com/photo-1543105177-748ceda71741?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                         preview={false} />
-
                 </Col>
                 <Col span={12} ref={myRef} className="get-started-info">
                     <Divider orientation="left" plain>

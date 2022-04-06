@@ -4,6 +4,7 @@ import PageFooter from './components/PageFooter';
 import PageContent from './components/PageContent';
 import ErrorPage from "./components/ErrorPage";
 import SignUp from "./components/SignUp";
+import TeeTimeBooking from "./components/TeeTimeBooking";
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageContent />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="teetimes" element={<TeeTimeBooking />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <PageFooter />
