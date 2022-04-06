@@ -70,3 +70,19 @@
   height: 400px;
   clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
 }
+
+/* TeeTimeBooking.js */
+.tee-time-booking-content {
+  background-color: #B9C8BC;
+  padding: 30px;
+}
+.booking-calendar-buttons {
+  margin-top: 25px;
+}
+.booking-table {
+  padding: 20px;
+}
+
+.nav-drawer {
+  font-family: 'Questrial', sans-serif;
+}
