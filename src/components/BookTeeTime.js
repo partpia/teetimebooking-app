@@ -4,9 +4,14 @@ import {
     message,
     Modal,
     Row,
-    Typography,
 } from 'antd';
-import { PlusOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import {
+    CalendarOutlined,
+    ClockCircleOutlined,
+    EnvironmentOutlined,
+    ExclamationCircleOutlined,
+    PlusOutlined
+} from '@ant-design/icons';
 import '../App.css';
 import { format } from 'date-fns';
 
@@ -24,15 +29,22 @@ const BookTeeTime = (props) => {
 
     const confirmationModal = () => {
         confirm({
-            title: 'Do you want to confirm your reservation?',
+            title: 'Do you want to confirm your tee time?',
             icon: <ExclamationCircleOutlined />,
-            content: `${props.teeTime.course.name} ${format(new Date(props.teeTime.startDate), 'E d.M.yyyy')}`,
+            okText: 'Book',
+            content: (
+                <>
+                    <><EnvironmentOutlined /> &nbsp;{props.teeTime.course.name}</>
+                    <br />
+                    <><CalendarOutlined /> &nbsp;{format(new Date(props.teeTime.startDate), 'E d.M.yyyy')}</>
+                    <br />
+                    <><ClockCircleOutlined /> &nbsp;{props.teeTime.startTime}</>
+                </>
+            ),
             onOk() {
-                console.log('OK');
+                bookTeeTime();
             },
-            onCancel() {
-                console.log('Cancel');
-            },
+            onCancel() { },
         });
     };
 
@@ -51,7 +63,6 @@ const BookTeeTime = (props) => {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     return (
