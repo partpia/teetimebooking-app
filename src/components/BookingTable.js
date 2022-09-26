@@ -14,13 +14,18 @@ const BookingTable = ( props ) => {
           title: 'Tee time',
           dataIndex: 'startTime',
           key: 'startTime',
+          width: 120,
+          align: 'center',         
+          render: (startTime) => {
+            return startTime.substring(0, 5);
+          }
         },
         {
           title: 'Bookings',
           key: 'bookedTeeTimesGolfers',
           dataIndex: 'bookedTeeTimes',
-          width: 300,
-          render: bookedTeeTimes => (
+          width: 325,
+          render: (bookedTeeTimes) => (
               bookedTeeTimes.map(time => (
                   <Avatar key={time.user.userId} size={42} style={{ backgroundColor: '#3D5B59', marginRight: '10px' }}>
                     {time.user.handicap}
@@ -32,7 +37,9 @@ const BookingTable = ( props ) => {
           title: 'HCP',
           key: 'bookedTeeTimesHcpSum',
           dataIndex: 'bookedTeeTimes',
-          render: bookedTeeTimes => {
+          width: 120,
+          align: 'center',
+          render: (bookedTeeTimes) => {
             let hcp = 0.0;
             bookedTeeTimes.map((time) => {
               hcp += time.user.handicap;
@@ -45,7 +52,9 @@ const BookingTable = ( props ) => {
         {
           title: '',
           key: 'book',
-          render: bookedTeeTimes => (
+          width: 160,
+          align: 'center',
+          render: (bookedTeeTimes) => (
             <BookTeeTime teeTime={bookedTeeTimes} getTeeTimes={props.getTeeTimes}/>
           ),
         },
