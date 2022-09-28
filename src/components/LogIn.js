@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import {
     EyeInvisibleOutlined,
-    EyeTwoTone
+    EyeTwoTone,
+    LoginOutlined
 } from '@ant-design/icons';
-import { Input, Space } from 'antd';
+import {
+    Button,
+    Input,
+    Space
+} from 'antd';
 
 const LogIn = () => {
     const [user, setUser] = useState({
@@ -12,8 +17,10 @@ const LogIn = () => {
     });
 
     const handleChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value });
     }
+
+    // TODO: Logging in
 
     return (
         <Space direction="vertical" size="middle" className="log-in">
@@ -30,6 +37,12 @@ const LogIn = () => {
                 placeholder="Password"
                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             />
+            <Button
+                icon={<LoginOutlined />}
+                size='large'
+                className='log-in-button'>
+                Log In
+            </Button>
         </Space>
     );
 }
