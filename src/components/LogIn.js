@@ -9,18 +9,36 @@ import {
     Input,
     Space
 } from 'antd';
+import { SERVER_URL } from "../constants";
 
-const LogIn = () => {
+const LogIn = (props) => {
     const [user, setUser] = useState({
         username: '',
-        pwd: ''
+        password: ''
     });
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
-    // TODO: Logging in
+    const logIn = () => {
+        fetch(SERVER_URL + 'login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        })
+            .then(response => {
+                const jwtToken = response.headers.get('Authorization');
+
+                if (jwtToken !== null) {
+                    sessionStorage.setItem("jwt", jwtToken);
+                    props.setIsAuth(true);
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    // TODO: alert if login failed
 
     return (
         <Space direction="vertical" size="middle" className="log-in">
@@ -31,7 +49,7 @@ const LogIn = () => {
                 placeholder="Username"
             />
             <Input.Password
-                name="pwd"
+                name="password"
                 onChange={handleChange}
                 size="large"
                 placeholder="Password"
@@ -40,7 +58,8 @@ const LogIn = () => {
             <Button
                 icon={<LoginOutlined />}
                 size='large'
-                className='log-in-button'>
+                className='log-in-button'
+                onClick={logIn}>
                 Log In
             </Button>
         </Space>
