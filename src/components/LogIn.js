@@ -7,6 +7,7 @@ import {
 import {
     Button,
     Input,
+    message,
     Space,
     Typography
 } from 'antd';
@@ -37,12 +38,12 @@ const LogIn = (props) => {
                 if (jwtToken !== null) {
                     sessionStorage.setItem("jwt", jwtToken);
                     props.setIsAuth(true);
+                } else {
+                    message.error('Please check your username and password.', 6);
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => message.error('Something went wrong. Try again later.', 6))
     }
-
-    // TODO: alert if login failed
 
     return (
         <Space direction="vertical" className="log-in">
