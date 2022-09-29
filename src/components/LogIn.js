@@ -10,6 +10,7 @@ import {
     Space,
     Typography
 } from 'antd';
+import { Link } from "react-router-dom";
 import { SERVER_URL } from "../constants";
 import '../App.css';
 const { Title } = Typography;
@@ -45,7 +46,7 @@ const LogIn = (props) => {
 
     return (
         <Space direction="vertical" className="log-in">
-            <Title level={3}>Log in and book tee times</Title>
+            <Title level={4}>Log in and book tee times</Title>
             <Input
                 name="username"
                 onChange={handleChange}
@@ -65,6 +66,14 @@ const LogIn = (props) => {
                 className='log-in-button'
                 onClick={logIn}>
                 Log In
+            </Button>
+            <Title level={5} className="margin-top-m">
+                Don't have an account?
+            </Title>
+            <Button
+                key="signup"
+                onClick={props.closeDrawer}>
+                <Link to="/signup">Sign Up</Link>
             </Button>
         </Space>
     );
