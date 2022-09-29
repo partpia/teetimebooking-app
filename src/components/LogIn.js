@@ -7,9 +7,12 @@ import {
 import {
     Button,
     Input,
-    Space
+    Space,
+    Typography
 } from 'antd';
 import { SERVER_URL } from "../constants";
+import '../App.css';
+const { Title } = Typography;
 
 const LogIn = (props) => {
     const [user, setUser] = useState({
@@ -41,7 +44,8 @@ const LogIn = (props) => {
     // TODO: alert if login failed
 
     return (
-        <Space direction="vertical" size="middle" className="log-in">
+        <Space direction="vertical" className="log-in">
+            <Title level={3}>Log in and book tee times</Title>
             <Input
                 name="username"
                 onChange={handleChange}
