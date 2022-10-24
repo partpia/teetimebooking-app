@@ -11,6 +11,7 @@ import {
     Select,
     Typography
 } from 'antd';
+import { useNavigate } from "react-router-dom";
 import { SERVER_URL } from '../constants';
 const { Paragraph } = Typography;
 const { Option } = Select;
@@ -54,6 +55,7 @@ const SignUp = () => {
             membershipId: ""
         }
     });
+    let navigate = useNavigate();
 
     useEffect(() => getMemberships(), []);
 
@@ -81,6 +83,7 @@ const SignUp = () => {
                 .then(response => {
                     if (response.ok) {
                         message.success('Account created, please sign in!')
+                        navigate("/");
                     } else {
                         message.error('Something went wrong! Please try again later.')
                     }
