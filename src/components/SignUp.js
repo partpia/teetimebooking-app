@@ -85,7 +85,19 @@ const SignUp = () => {
                         message.success('Account created, please sign in!')
                         navigate("/");
                     } else {
-                        message.error('Something went wrong! Please try again later.')
+                        switch (response.status) {
+                            case 406:
+                                message.error('Something went wrong! Please try again.');
+                                break;
+                            case 409:
+                                message.error('Usename taken! Please select an other username.');
+                                break;
+                            case 422:
+                                message.error('Email already in use! Please insert an other email.');
+                                break;
+                            default:
+                                message.error('Something went wrong! Please try again later.')
+                        }
                     }
                 })
         } catch (error) {
@@ -100,10 +112,7 @@ const SignUp = () => {
                     <Paragraph className='create-account-title'>Create Account</Paragraph>
                 </Col>
                 <Col span={16} className='sign-up-right-col'>
-                    <Paragraph
-                        className='create-account-text'>
-                        Please fill in the form below
-                    </Paragraph>
+                    <Paragraph className='create-account-text'>Please fill in the form below</Paragraph>
                     <Form
                         {...formItemLayout}
                         form={form}
