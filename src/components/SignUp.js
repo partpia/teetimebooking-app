@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {
     Button,
-    Divider,
+    Col,
     Form,
     Input,
     InputNumber,
     Layout,
+    message,
+    Row,
     Select,
     Typography
 } from 'antd';
 import { SERVER_URL } from '../constants';
-const { Paragraph, Title } = Typography;
+const { Paragraph } = Typography;
 const { Option } = Select;
 const { Content } = Layout;
 
@@ -43,14 +45,14 @@ const SignUp = () => {
     const [user, setUser] = useState({
         username: '',
         password: '',
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
         email: '',
         handicap: '',
         role: 'USER',
         member: {
-            membershipId: null
-        },
+            membershipId: ""
+        }
     });
 
     useEffect(() => getMemberships(), []);
@@ -69,167 +71,197 @@ const SignUp = () => {
         setUser({ ...user, [e.target.name]: e.target.value });
     }
 
-    //TODO: register
+    const registerNewUser = () => {
+        try {
+            fetch(SERVER_URL + "register", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        message.success('Account created, please sign in!')
+                    } else {
+                        message.error('Something went wrong! Please try again later.')
+                    }
+                })
+        } catch (error) {
+            message.error('Something went wrong! Please try again later.')
+        }
+    }
 
     return (
         <Content className='sign-up-content'>
-            <Divider orientation="center" plain>
-                <Title
-                    level={3}
-                    className='sign-up-titles'>
-                    Sign up
-                </Title>
-            </Divider>
-            <Paragraph
-                className='sign-up-titles'>
-                Please fill in the form below.
-            </Paragraph>
-            <Form
-                {...formItemLayout}
-                form={form}
-                name="register"
-                scrollToFirstError>
-                <Form.Item
-                    name="firstname"
-                    label="First name"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please fill in your first name',
-                        },
-                    ]}>
-                    <Input
-                        name="firstname"
-                        onChange={handleChange}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="lastname"
-                    label="Last name"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please fill in your last name',
-                        },
-                    ]}>
-                    <Input
-                        name="lastname"
-                        onChange={handleChange}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid e-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please fill in your e-mail!',
-                        },
-                    ]}>
-                    <Input
-                        name="email"
-                        onChange={handleChange}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="member"
-                    label="Membership"
-                    hasFeedback
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please select your membership',
-                        },
-                    ]}>
-                    <Select
-                        placeholder="Please select a membership"
-                        onChange={handleChange}>
-                        {memberships.map((item, index) => {
-                            return (
-                                <Option value={item.membershipId} key={item.membershipId}>
-                                    {item.golfClubName}
-                                </Option>)
-                        })}
-                    </Select>
-                </Form.Item>
-                <Form.Item
-                    name="handicap"
-                    label="HCP"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please fill in your handicap',
-                        },
-                    ]}>
-                    <InputNumber
-                        name="handicap"
-                        max="54"
-                        step="0.1"
-                        stringMode
-                        onChange={handleChange}
-                        style={{ width: 80 }}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="username"
-                    label="Username"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please fill in your username',
-                        },
-                    ]}>
-                    <Input
-                        name="username"
-                        onChange={handleChange}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please fill in your password!',
-                        },
-                    ]}
-                    hasFeedback>
-                    <Input.Password
-                        name="password"
-                        onChange={handleChange}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="confirm"
-                    label="Confirm Password"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please confirm your password!',
-                        },
-                        ({ getFieldValue }) => ({
-                            validator(_, value) {
-                                if (!value || getFieldValue('password') === value) {
-                                    return Promise.resolve();
-                                }
-                                return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                            },
-                        }),
-                    ]}>
-                    <Input.Password />
-                </Form.Item>
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Register
-                    </Button>
-                </Form.Item>
-            </Form>
+            <Row>
+                <Col span={8} className="sign-up-left-col">
+                    <Paragraph className='create-account-title'>Create Account</Paragraph>
+                </Col>
+                <Col span={16} className='sign-up-right-col'>
+                    <Paragraph
+                        className='create-account-text'>
+                        Please fill in the form below
+                    </Paragraph>
+                    <Form
+                        {...formItemLayout}
+                        form={form}
+                        name="register"
+                        scrollToFirstError
+                        className='sign-up-form'>
+                        <Form.Item
+                            name="firstName"
+                            label="First name"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please fill in your first name',
+                                },
+                            ]}>
+                            <Input
+                                name="firstName"
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="lastName"
+                            label="Last name"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please fill in your last name',
+                                },
+                            ]}>
+                            <Input
+                                name="lastName"
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="email"
+                            label="E-mail"
+                            rules={[
+                                {
+                                    type: 'email',
+                                    message: 'The input is not valid e-mail!',
+                                },
+                                {
+                                    required: true,
+                                    message: 'Please fill in your e-mail!',
+                                },
+                            ]}>
+                            <Input
+                                name="email"
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="member"
+                            label="Membership"
+                            hasFeedback
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please select your membership',
+                                },
+                            ]}>
+                            <Select
+                                value={user.member.membershipId}
+                                placeholder="Please select a membership"
+                                onChange={e => setUser({
+                                    ...user, member: {
+                                        membershipId: e.toString()
+                                    }
+                                })}>
+                                {memberships.map((item, index) => {
+                                    return (
+                                        <Option value={item.membershipId} key={item.membershipId}>
+                                            {item.golfClubName}
+                                        </Option>)
+                                })}
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="handicap"
+                            label="HCP"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please fill in your handicap',
+                                },
+                            ]}>
+                            <InputNumber
+                                onInput={e => setUser({
+                                    ...user, handicap: e
+                                })}
+                                max="54"
+                                step="0.1"
+                                stringMode
+                                style={{ width: 80 }}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="username"
+                            label="Username"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please fill in your username',
+                                },
+                            ]}>
+                            <Input
+                                name="username"
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="password"
+                            label="Password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please fill in your password!',
+                                },
+                            ]}
+                            hasFeedback>
+                            <Input.Password
+                                name="password"
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="confirm"
+                            label="Confirm Password"
+                            dependencies={['password']}
+                            hasFeedback
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please confirm your password!',
+                                },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                    },
+                                }),
+                            ]}>
+                            <Input.Password />
+                        </Form.Item>
+                        <Form.Item {...tailFormItemLayout}>
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                shape="round"
+                                size="large"
+                                onClick={registerNewUser}
+                                className="sign-in-button">
+                                Sign up
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Col>
+            </Row>
         </Content>
     );
 }
