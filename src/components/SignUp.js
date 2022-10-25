@@ -267,7 +267,7 @@ const SignUp = () => {
                                 shape="round"
                                 size="large"
                                 onClick={registerNewUser}
-                                className="sign-in-button">
+                                className="custom-button-l-green">
                                 Sign up
                             </Button>
                         </Form.Item>
