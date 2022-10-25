@@ -1,20 +1,67 @@
 @import "~antd/dist/antd.css";
 @import url('https://fonts.googleapis.com/css2?family=Questrial&family=Raleway:wght@500&family=Rock+Salt&display=swap');
 
-.App {
-  font-family: 'Raleway', sans-serif;
-}
+/* commons */
+
 .black-link {
   color: black;
 }
-.header {
-  border: 1px solid rgb(235, 237, 240);
-  background-color: #EEEDE7;
+
+.margin-top-m {
+  margin-top: 25px;
+}
+
+.custom-button-l-green {
+  border-color: #1f8b74;
+  background-color: #7bc0b1;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+.custom-button-l-green:hover {
+  background-color: #1f8b74;
+  border-color: #7bc0b1;
+}
+
+.custom-button-d-green {
+  border-color: #7bc0b1;
+  background-color: #1f8b74;
+}
+.custom-button-d-green:hover {
+  background-color: #7bc0b1;
+  border-color: #1f8b74;
+}
+
+/* App.js */
+.App {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* BookingTable.js */
+.booking-table {
+  margin-top: 15px;
+}
+
+.booking-avatars {
+  background-color: #1f8b74;
+  margin-right: 10px;
+}
+
+/* LogIn.js */
+.log-in {
+  padding: 15px;
+}
+
+/* MenuRightSide.js */
+.nav-drawer {
   font-family: 'Questrial', sans-serif;
 }
+
+/* PageContent.js */
 .get-started-main {
   background-color: #EEEDE7;
 }
+
 .get-started-main-col {
   background: url("./assets/images/michael-mueller-u6C3lULwghM-unsplash.jpg") 30% 70% no-repeat;
   background-size: cover;
@@ -26,6 +73,7 @@
   background-color: #F6EEE0;
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 80%);
 }
+
 .get-started-main-card-group {
   max-width: 100%;
   margin-top: 30px;
@@ -35,27 +83,33 @@
   text-align: center;
   align-items: center;
 }
+
 .card-group {
   padding: 20px;
 }
+
 .card-group-card-even {
   background-color: #EBE8E0;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 16px 0 rgba(0, 0, 0, 0.19);
 }
+
 .card-group-card-uneven {
-  background-color: rgb(220, 210, 204, 0.5);
+  background-color: rgba(220, 209, 203, 0.502);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 16px 0 rgba(0, 0, 0, 0.19);
 }
+
 .get-started-info {
-  background-color: #B9C8BC;
+  background-color: #7bc0b1;
   height: inherit;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .info-title {
   font-family: 'Rock Salt', cursive;
   text-align: center;
 }
+
 .info-text {
   font-family: 'Raleway', sans-serif;
   font-size: 22px;
@@ -65,24 +119,108 @@
   color: black;
 }
 
+/* PageFooter.js */
 .footer {
-  background-color: #3B9778;
-  height: 400px;
-  clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
+  background-color: #1f8b74;
+  height: 220px;
+  border-top: #ffffff solid 8px;
+}
+
+.footer-title {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.footer-contact-info-icons {
+  margin-right: 8px;
+}
+
+.footer-contact-info {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* SignUp.js*/
+.sign-up-content {
+  background-color: #ffffff;
+}
+
+.sign-up-left-col {
+  margin-top: 8px;
+  background-color: #7bc0b1;
+  text-align: center;
+}
+
+.create-account-title {
+  color: #ffffff;
+  font-size: 46px;
+  margin-top: 120px;
+  justify-content: flex-end;
+}
+
+.sign-up-right-col {
+  background-color: #ffffff;
+  border-width: 8px 8px 0 8px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.create-account-text {
+  font-size: 28px;
+  margin: 30px 0 0 30px;
+}
+
+.sign-up-form {
+  padding: 30px 30px 5px 0;
+  background-color: #EBE8E0;
+  border-radius: 0 50px 0 0;
 }
 
 /* TeeTimeBooking.js */
 .tee-time-booking-content {
-  background-color: #B9C8BC;
-  padding: 30px;
-}
-.booking-calendar-buttons {
-  margin-top: 25px;
-}
-.booking-table {
-  padding: 20px;
+  background-color: #ffffff;
+  border-top: #ffffff solid 8px;
 }
 
-.nav-drawer {
+.tee-time-booking-info-col-left {
+  height: 160px;
+  background-color: #7bc0b1;
+  border-right: 8px solid #ffffff;
+  font-size: 32px;
+  padding: 40px;
+}
+
+.tee-time-booking-info-col-right {
+  height: 160px;
+  background-color: #EBE8E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 50px;
+  border-right: 8px solid #ffffff;
+  margin-top: 35px;
+}
+
+.tee-time-booking-hcp-info {
+  width: 90%;
+  font-size: 16px;
+}
+
+.tee-time-booking-tab {
+  
+}
+
+.tee-time-booking-tabs {
+  font-size: 28px;
+}
+
+/* TopHeader.js */
+.header {
+  border-bottom: 1px solid #ebedf0;
+  background-color: #EEEDE7;
   font-family: 'Questrial', sans-serif;
+}
+
+.log-in-button {
+  background-color: #EBE8E0;
 }
