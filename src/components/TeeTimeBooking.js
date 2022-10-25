@@ -9,8 +9,7 @@ import {
 } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import '../App.css';
-import CalendarCourseOne from "./CalendarCourseOne";
-import CalendarCourseTwo from "./CalendarCourseTwo";
+import CalendarCourse from "./CalendarCourse";
 
 const TeeTimeBooking = () => {
     const { Paragraph } = Typography;
@@ -38,13 +37,13 @@ const TeeTimeBooking = () => {
             <Tabs
                 type="card"
                 size="large"
-                className="test"
+                className="tee-time-booking-tabs"
                 tabBarGutter={8}>
                 <TabPane tab="Holy Round 18 holes" key="1" className="tee-time-booking-tab">
-                    <CalendarCourseOne />
+                    <CalendarCourse courseId={1} />
                 </TabPane>
                 <TabPane tab="Half of Joy 9 holes" key="2" className="tee-time-booking-tab">
-                    <CalendarCourseTwo />
+                    <CalendarCourse courseId={2} />
                 </TabPane>
             </Tabs>
         </Content >
