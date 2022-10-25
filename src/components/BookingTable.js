@@ -27,7 +27,7 @@ const BookingTable = ( props ) => {
           width: 325,
           render: (bookedTeeTimes) => (
               bookedTeeTimes.map(time => (
-                  <Avatar key={time.user.userId} size={42} style={{ backgroundColor: '#3D5B59', marginRight: '10px' }}>
+                  <Avatar key={time.user.userId} size={42} className="booking-avatars">
                     {time.user.handicap}
                   </Avatar>)
               )
