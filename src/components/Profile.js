@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { SERVER_URL } from "../constants";
 
 const Profile = () => {
+    const [user, setUser] = useState({});
 
-    // TODO: User's profile information
+    useEffect(() => getUserDetails(), []);
 
-    return(
+    const getUserDetails = () => {
+        const token = sessionStorage.getItem('jwt');
+
+        try {
+            fetch(SERVER_URL + 'account', {
+                headers: { 'Authorization': token }
+            })
+                .then(response => response.json())
+                .then(data => setUser(data))
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    return (
         <div>
             Profile information coming soon.
-        </div>        
+        </div>
     )
 }
 export default Profile;
